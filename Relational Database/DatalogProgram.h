@@ -29,6 +29,11 @@ public:
 		return this->schemeList;
 	}
 
+	vector<Predicate> getFacts()
+	{
+		return this->factList;
+	}
+
 	void pushSchemeList(Predicate pred)
 	{
 		schemeList.push_back(pred);

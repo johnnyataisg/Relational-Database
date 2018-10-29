@@ -3,6 +3,8 @@
 #include "LexicalAnalyzer.h"
 #include "Parser.h"
 #include "Relation.h"
+#include "Database.h"
+#include "Interpreter.h"
 #ifdef _MSC_VER
 #define _CRTDBG_MAP_ALLOC  
 #include <crtdbg.h>
@@ -33,27 +35,8 @@ int main(int argc, char* argv[])
 		Parser parser(lex.getList());
 		parser.parse();
 
-		vector<Relation> relations;
-		vector<Predicate> schemes = parser.getDatalog().getSchemes();
-		Header header;
-		Tuple tuple;
-		tuple.addString("Johnny");
-		tuple.addString("Jina");
-		for (Predicate pred : schemes)
-		{
-			for (Parameter* param : pred.getParamList())
-			{
-				header.addString(param);
-			}
-			Relation relation(pred.getID(), header);
-			relation.addTuple(tuple);
-			relations.push_back(relation);
-		}
-
-		for (Relation rel : relations)
-		{
-			cout << rel.toString() << endl;
-		}
+		Interpreter interpreter(parser.getDatalog());
+		cout << (interpreter.getDatabase())["SK"].toString();
 
 		system("pause");
 		return 0;

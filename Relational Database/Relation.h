@@ -21,6 +21,21 @@ public:
 		header = hdr;
 	}
 
+	Relation(Predicate pred, vector<Predicate> facts)
+	{
+		Header hdr(pred.getParamList());
+		this->name = pred.getID();
+		this->header = hdr;
+		for (Predicate pred : facts)
+		{
+			if (pred.getID() == this->name)
+			{
+				Tuple tuple(pred.getParamList());
+				this->addTuple(tuple);
+			}
+		}
+	}
+
 	~Relation() {};
 	
 	void addTuple(Tuple tpl)

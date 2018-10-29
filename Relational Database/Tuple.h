@@ -5,39 +5,21 @@
 
 using namespace std;
 
-class Tuple
+class Tuple : public vector<string>
 {
 private:
-	string first;
-	vector<string> tuple;
 public:
 	Tuple() {};
+
+	Tuple(vector<Parameter*> vec)
+	{
+		for (Parameter* param : vec)
+		{
+			this->push_back(param->toString());
+		}
+	}
+
 	~Tuple() {};
-
-	friend bool operator <(Tuple x, Tuple y) 
-	{
-		return x.getFirst() < y.getFirst();
-	}
-
-	string getFirst()
-	{
-		return this->first;
-	}
-
-	string at(size_t index)
-	{
-		return tuple.at(index);
-	}
-
-	size_t size()
-	{
-		return this->tuple.size();
-	}
-
-	void addString(string str)
-	{
-		tuple.push_back(str);
-	}
 };
 
 #endif
