@@ -37,13 +37,7 @@ public:
 			string value = pred.getParamList().at(i)->toString();
 			if (pred.getParamList().at(i)->isConstant())
 			{
-				for (Tuple tpl : relation.getTuples())
-				{
-					if (tpl.at(i) != value)
-					{
-						relation.deleteTuple(tpl);
-					}
-				}
+				relation.select(i, value);
 			}
 			else if (rpMap.find(value) == rpMap.end())
 			{

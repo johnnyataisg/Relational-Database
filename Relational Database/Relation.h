@@ -54,6 +54,17 @@ public:
 		return this->name;
 	}
 
+	void select(int col, string val)
+	{
+		for (Tuple tpl : getTuples())
+		{
+			if (tpl.at(col) != val)
+			{
+				this->deleteTuple(tpl);
+			}
+		}
+	}
+
 	void rename(vector<string> vec)
 	{
 		for (size_t i = 0; i < vec.size(); i++)
