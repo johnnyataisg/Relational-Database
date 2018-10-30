@@ -1,0 +1,11 @@
+#Testing 1st query, header should be renamed from C to X and return 1 tuple
+Schemes: 
+	dc(D,C)
+Facts:
+	dc('ralph','howard').
+Rules:
+
+Queries:
+	dc('ralph', X)?
+	dc('bob','bob')?
+	dc(X,Y)?

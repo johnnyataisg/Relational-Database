@@ -1,0 +1,2 @@
+A='Arthur', B='Freshman'
+A='Sidney', B='Sophomore'

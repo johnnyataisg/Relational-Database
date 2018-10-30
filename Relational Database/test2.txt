@@ -1,0 +1,12 @@
+#Testing whether a query with no tuples in the first place would work properly (should return nothing)
+
+Schemes:
+  bob(A)
+
+Facts:
+
+Rules:
+
+Queries:
+  bob(A)?
+

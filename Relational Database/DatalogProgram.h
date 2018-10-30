@@ -34,6 +34,11 @@ public:
 		return this->factList;
 	}
 
+	vector<Predicate> getQueries()
+	{
+		return this->queryList;
+	}
+
 	void pushSchemeList(Predicate pred)
 	{
 		schemeList.push_back(pred);

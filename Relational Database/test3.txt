@@ -1,0 +1,14 @@
+#Testing duplicate removal of database relations and simple query
+
+Schemes:
+  bob(A)
+
+Facts:
+  bob('a').
+  bob('a').
+
+Rules:
+
+Queries:
+  bob(A)?
+

@@ -1,0 +1,13 @@
+#Testing query with two arguments and also changing header to variable value
+
+Schemes:
+  bob(A,B)
+
+Facts:
+  bob('a','b').
+
+Rules:
+
+Queries:
+  bob('a',B)?
+

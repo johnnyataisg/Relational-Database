@@ -19,6 +19,16 @@ public:
 	}
 
 	~Header() {};
+
+	string toString()
+	{
+		string output;
+		for (size_t i = 0; i < this->size(); i++)
+		{
+			output += this->at(i) + " ";
+		}
+		return output;
+	}
 };
 
 #endif

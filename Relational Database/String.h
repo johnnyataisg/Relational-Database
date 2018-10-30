@@ -8,6 +8,7 @@ class String : public Parameter
 {
 private:
 	string value;
+	bool constant = true;
 public:
 	String() {};
 	String(string str)
@@ -18,6 +19,10 @@ public:
 	string toString()
 	{
 		return this->value;
+	}
+	bool isConstant()
+	{
+		return this->constant;
 	}
 };
 

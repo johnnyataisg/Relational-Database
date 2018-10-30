@@ -9,6 +9,7 @@ private:
 	Parameter* left;
 	Parameter* right;
 	string oper;
+	bool constant = false;
 public:
 	Expression() {};
 	virtual~Expression() {};
@@ -29,6 +30,10 @@ public:
 		string output;
 		output += "(" + this->left->toString() + this->oper + this->right->toString() + ")";
 		return output;
+	}
+	bool isConstant()
+	{
+		return this->constant;
 	}
 };
 

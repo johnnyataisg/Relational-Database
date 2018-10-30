@@ -1,6 +1,7 @@
 #pragma once
 #ifndef DATABASE_H_
 #define DATABASE_H_
+#include "Relation.h"
 #include <map>
 
 using namespace std;

@@ -36,16 +36,19 @@ void Parser::match(TokenType tt)
 }
 
 //Begin the parsing process
-void Parser::parse()
+bool Parser::parse()
 {
 	try 
 	{
 		parseDatalog();
-		cout << "Success!" << endl;
-		cout << datalog.toString();	}
+		//cout << "Success!" << endl;
+		//cout << datalog.toString();	
+		return true;
+	}
 	catch (Token token)
 	{	
 		cout << "Failure!" << endl << "  {" << myList[token.getType()] << "," << token.getValue() << "," << token.getLineNum() << ")" << endl;
+		return false;
 	}
 }
 

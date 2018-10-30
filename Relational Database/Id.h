@@ -9,6 +9,7 @@ class Id : public Parameter
 {
 private:
 	string value;
+	bool constant = false;
 public:
 	Id() {};
 	Id(string str)
@@ -19,6 +20,10 @@ public:
 	string toString()
 	{
 		return this->value;
+	}
+	bool isConstant()
+	{
+		return this->constant;
 	}
 };
 

@@ -7,12 +7,11 @@ using namespace std;
 class Parameter
 {
 private:
-	string value;
-	string type;
 public:
 	Parameter() {};
 	virtual ~Parameter() {};
 	virtual string toString() = 0;
+	virtual bool isConstant() = 0;
 };
 
 #endif

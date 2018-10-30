@@ -36,7 +36,7 @@ public:
 	Parser(list<Token> list);
 	~Parser();
 	void match(TokenType tt);
-	void parse();
+	bool parse();
 	void parseDatalog();
 	void parseScheme();
 	void parseSchemeList();

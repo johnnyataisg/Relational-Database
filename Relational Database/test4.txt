@@ -1,0 +1,13 @@
+#Testing whether rename works properly. Should change A to X in the header
+
+Schemes:
+  bob(A)
+
+Facts:
+  bob('a').
+
+Rules:
+
+Queries:
+  bob(X)?
+

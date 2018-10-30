@@ -3,6 +3,7 @@
 #define RELATION_H_
 #include "Tuple.h"
 #include "Header.h"
+#include <map>
 
 using namespace std;
 
@@ -43,9 +44,53 @@ public:
 		tuples.insert(tpl);
 	}
 
+	void deleteTuple(Tuple tpl)
+	{
+		tuples.erase(tpl);
+	}
+
 	string getName()
 	{
 		return this->name;
+	}
+
+	void rename(vector<string> vec)
+	{
+		for (size_t i = 0; i < vec.size(); i++)
+		{
+			this->header.at(i) = vec.at(i);
+		}
+	}
+
+	void project(map<string, int> myMap)
+	{
+		Header newHeader;
+		set<Tuple> newTuples;
+		for (pair<string, int> pair : myMap)
+		{
+			newHeader.push_back(header.at(pair.second));
+		}
+		for (Tuple tpl : tuples)
+		{
+			Tuple tuple;
+			for (pair<string, int> pair : myMap)
+			{
+				tuple.push_back(tpl.at(pair.second));
+			}
+			newTuples.insert(tuple);
+		}
+		this->header = newHeader;
+		this->tuples = newTuples;
+	}
+
+	Header getHeader()
+	{
+		return this->header;
+	}
+
+	set<Tuple> getTuples()
+	{
+		return this->tuples;
 	}
 
 	string toString()
@@ -53,19 +98,21 @@ public:
 		string output;
 		for (Tuple tup : tuples)
 		{
-			for (size_t i = 0; i < tup.size(); i++)
+			for (size_t i = 0; i < header.size(); i++)
 			{
 				output += header.at(i) + "=" + tup.at(i);
-				if (i != tup.size() - 1)
+				if (i != header.size() - 1)
 				{
 					output += ", ";
 				}
+				else
+				{
+					output += "\n";
+				}
 			}
-			output += "\n";
 		}
 		return output;
 	}
-	//S='12345', N='Charlie', A='12 Apple St.', P='555-1234'
 };
 
 #endif
