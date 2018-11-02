@@ -36,15 +36,8 @@ int main(int argc, char* argv[])
 		if (run)
 		{
 			Interpreter interpreter(parser.getDatalog());
-
-			cout << interpreter.getDatabase().toString() << endl;
-			for (pair<string, Relation> pair : interpreter.runQueries())
-			{
-				cout << pair.first + "\n" + pair.second.toString();
-			}
-				
+			cout << interpreter.printQueryResults();
 		}
-		
-		system("pause");
+	
 		return 0;
 }

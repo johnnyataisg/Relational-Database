@@ -83,7 +83,15 @@ public:
 		return db;
 	}
 
-	
+	string printQueryResults()
+	{
+		string output;
+		for (pair<string, Relation> pair : runQueries())
+		{
+			output += pair.first + "\n" + pair.second.toString();
+		}
+		return output;
+	}
 };
 
 #endif
