@@ -111,6 +111,10 @@ public:
 		{
 			for (size_t i = 0; i < header.size(); i++)
 			{
+				if (i == 0)
+				{
+					output += "  ";
+				}
 				output += header.at(i) + "=" + tup.at(i);
 				if (i != header.size() - 1)
 				{

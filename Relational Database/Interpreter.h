@@ -26,9 +26,9 @@ public:
 		return this->database;
 	}
 
-	Relation runQuery()
+	Relation runQuery(int index)
 	{
-		Predicate pred = datalog.getQueries().front();
+		Predicate pred = datalog.getQueries().at(index);
 		Relation relation = database[pred.getID()];
 		map<string, int> rpMap;
 		vector<string> rename;
@@ -61,6 +61,29 @@ public:
 		relation.rename(rename);
 		return relation;
 	}
+
+	vector<pair<string, Relation>> runQueries()
+	{
+		vector<pair<string, Relation>> db;
+		for (size_t i = 0; i < datalog.getQueries().size(); i++)
+		{
+			Relation relation = runQuery(i);
+			int size = relation.getTuples().size();
+			if (size == 0)
+			{
+				db.push_back(pair<string, Relation>(datalog.getQueries().at(i).toString() + "? No", relation));
+			}
+			else
+			{
+				stringstream ss;
+				ss << size;
+				db.push_back(pair<string, Relation>(datalog.getQueries().at(i).toString() + "? Yes(" + ss.str() + ")", relation));
+			}
+		}
+		return db;
+	}
+
+	
 };
 
 #endif

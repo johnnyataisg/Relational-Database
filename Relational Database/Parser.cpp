@@ -41,8 +41,6 @@ bool Parser::parse()
 	try 
 	{
 		parseDatalog();
-		//cout << "Success!" << endl;
-		//cout << datalog.toString();	
 		return true;
 	}
 	catch (Token token)

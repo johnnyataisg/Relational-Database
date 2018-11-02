@@ -25,6 +25,15 @@ public:
 
 	~Database() {};
 
+	string toString()
+	{
+		string output;
+		for (pair<string, Relation> pair : *this)
+		{
+			output += pair.first + "\n" + pair.second.toString();
+		}
+		return output;
+	}
 };
 
 #endif

@@ -1,5 +1,3 @@
-#Testing first query. Expecting 2 tuples to be returned
-
 Schemes:
   SK(A,B)
 Facts:
@@ -8,10 +6,10 @@ Facts:
   SK('b','b').
   SK('b','c').
 Rules:
-
+  DoNothing(Z) :- Stuff(Z).
 Queries:
   SK(A,'c')?
   SK('b','c')?
+  SK('c','c')?
   SK(X,X)?
   SK(A,B)?
-  SK('c','c')?
