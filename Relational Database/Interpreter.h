@@ -30,8 +30,9 @@ public:
 	{
 		Predicate pred = datalog.getQueries().at(index);
 		Relation relation = database[pred.getID()];
-		map<string, int> rpMap;
+		vector<int> projectIndexes;
 		vector<string> rename;
+		map<string, int> rpMap;
 		for (size_t i = 0; i < pred.getParamList().size(); i++)
 		{
 			string value = pred.getParamList().at(i)->toString();
@@ -41,8 +42,9 @@ public:
 			}
 			else if (rpMap.find(value) == rpMap.end())
 			{
-				rpMap.insert(pair<string, int>(value, i));
+				projectIndexes.push_back(i);
 				rename.push_back(value);
+				rpMap.insert(pair<string, int>(value, i));
 			}
 			else
 			{
@@ -57,7 +59,7 @@ public:
 				}
 			}
 		}
-		relation.project(rpMap);
+		relation.project(projectIndexes);
 		relation.rename(rename);
 		return relation;
 	}
@@ -92,6 +94,8 @@ public:
 		}
 		return output;
 	}
+
+
 };
 
 #endif

@@ -39,5 +39,6 @@ int main(int argc, char* argv[])
 			cout << interpreter.printQueryResults();
 		}
 	
+		system("pause");
 		return 0;
 }

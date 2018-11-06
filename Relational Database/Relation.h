@@ -73,20 +73,20 @@ public:
 		}
 	}
 
-	void project(map<string, int> myMap)
+	void project(vector<int> indexes)
 	{
 		Header newHeader;
 		set<Tuple> newTuples;
-		for (pair<string, int> pair : myMap)
+		for (int index : indexes)
 		{
-			newHeader.push_back(header.at(pair.second));
+			newHeader.push_back(header.at(index));
 		}
 		for (Tuple tpl : tuples)
 		{
 			Tuple tuple;
-			for (pair<string, int> pair : myMap)
+			for (int index : indexes)
 			{
-				tuple.push_back(tpl.at(pair.second));
+				tuple.push_back(tpl.at(index));
 			}
 			newTuples.insert(tuple);
 		}
